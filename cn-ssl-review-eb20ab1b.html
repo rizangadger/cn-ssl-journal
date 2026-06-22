@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>jiuyou · 站点介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #eaf4f0;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.7;
+            color: #1f2e2a;
+            padding: 2rem 1.2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        /* 开场小段落 */
+        .opening {
+            background: #ffffffd9;
+            backdrop-filter: blur(2px);
+            padding: 2rem 2rem 1.8rem;
+            border-radius: 32px 32px 24px 24px;
+            box-shadow: 0 8px 20px rgba(30, 70, 60, 0.06);
+            margin-bottom: 2.2rem;
+            border-left: 6px solid #1d8a7a;
+        }
+
+        .opening p:first-of-type {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            color: #1e5c51;
+            font-weight: 400;
+            letter-spacing: 0.01em;
+        }
+
+        .opening strong {
+            color: #157568;
+            font-weight: 600;
+        }
+
+        .tagline {
+            display: inline-block;
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+            color: #4c7a6e;
+            background: #d6ede6;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+        }
+
+        /* 承接段落—网格卡片区 */
+        .bridge {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        @media (min-width: 520px) {
+            .bridge {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 1.8rem 1.5rem 1.6rem;
+            box-shadow: 0 3px 12px rgba(30, 60, 50, 0.05);
+            transition: transform 0.1s ease, box-shadow 0.2s;
+            border-top: 3px solid #b3d9cf;
+        }
+
+        .card:nth-child(2) {
+            border-top-color: #1d8a7a;
+        }
+
+        .card:nth-child(3) {
+            border-top-color: #7bb7a9;
+        }
+
+        .card:nth-child(4) {
+            border-top-color: #4f9b8b;
+        }
+
+        .card h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.7rem;
+            color: #1a4f45;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .card h3::before {
+            content: "◆";
+            font-size: 0.9rem;
+            color: #1d8a7a;
+            margin-right: 4px;
+        }
+
+        .card p {
+            font-size: 0.96rem;
+            color: #2b423c;
+            margin-bottom: 0.3rem;
+        }
+
+        .card .meta {
+            font-size: 0.85rem;
+            color: #4c766a;
+            margin-top: 0.7rem;
+            border-top: 1px solid #e7f1ed;
+            padding-top: 0.5rem;
+        }
+
+        /* 特点列表 — 紧凑摘要 */
+        .features {
+            background: #e7f3ef;
+            border-radius: 36px 36px 28px 28px;
+            padding: 2rem 1.8rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .features h2 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #134d41;
+            margin-bottom: 1.2rem;
+            letter-spacing: 0.02em;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem 1.6rem;
+        }
+
+        @media (max-width: 440px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .feat-item {
+            display: flex;
+            gap: 0.6rem;
+            align-items: flex-start;
+            font-size: 0.95rem;
+        }
+
+        .feat-item .icon {
+            color: #1d8a7a;
+            font-weight: 700;
+            min-width: 1.3rem;
+        }
+
+        .feat-item span {
+            color: #1f3d35;
+        }
+
+        /* 温和结尾 + 链接嵌入 */
+        .gentle-close {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 2rem 2rem 1.8rem;
+            box-shadow: 0 4px 14px rgba(20, 60, 50, 0.04);
+            margin-bottom: 2rem;
+            border-bottom: 3px solid #cde3db;
+        }
+
+        .gentle-close p {
+            margin-bottom: 0.8rem;
+        }
+
+        .gentle-close a {
+            color: #116b5b;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 1.5px solid #7bb7a9;
+            transition: border-color 0.2s, color 0.1s;
+        }
+
+        .gentle-close a:hover,
+        .gentle-close a:focus {
+            border-bottom-color: #116b5b;
+            color: #0b4e41;
+        }
+
+        .footnote {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #4f786c;
+            padding-top: 1rem;
+            border-top: 1px solid #d1e3dc;
+            margin-top: 0.4rem;
+        }
+
+        .footnote span {
+            background: #dfefe9;
+            padding: 0.1rem 0.6rem;
+            border-radius: 30px;
+        }
+
+        /* 移动端微调 */
+        @media (max-width: 480px) {
+            body {
+                padding: 1.5rem 0.9rem;
+            }
+            .opening {
+                padding: 1.8rem 1.2rem;
+            }
+            .card {
+                padding: 1.5rem 1.2rem;
+            }
+            .features {
+                padding: 1.5rem 1.2rem;
+            }
+            .gentle-close {
+                padding: 1.5rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 开场短句 -->
+    <div class="opening">
+        <p>一个围绕稳定连接与基础服务展开的站点，名字叫 <strong>jiuyou</strong> —— 没有繁复的修饰，侧重实在的可用性说明。</p>
+        <p style="font-size:0.95rem; color:#2a5f52;">从域名结构到内容组织，首要目标都是让使用者快速建立基础认知，减少信息损耗。</p>
+        <div class="tagline">简洁 · 直接 · 可验证</div>
+    </div>
+
+    <!-- 承接段落：网格卡片，侧重站点介绍与可信说明 -->
+    <div class="bridge">
+        <div class="card">
+            <h3>站点定位</h3>
+            <p>资源索引与技术文档的聚合点，内容围绕网络基础配置、证书相关常识以及服务状态说明展开。所有公开信息均可对照官方来源核实。</p>
+            <div class="meta">基于可查阅的资料搭建</div>
+        </div>
+        <div class="card">
+            <h3>可信背景</h3>
+            <p>页面所引用或链接的内容均来自公开可访问的渠道，无隐藏重定向。服务描述与实际情况保持一致，不夸大可用范围。</p>
+            <div class="meta">信息透明度优先</div>
+        </div>
+        <div class="card">
+            <h3>内容结构</h3>
+            <p>按功能模块划分：指南类、说明类、状态参考。每个部分都附带更新日期与简要版本标记，便于回溯变化。</p>
+            <div class="meta">版本可追溯</div>
+        </div>
+        <div class="card">
+            <h3>使用建议</h3>
+            <p>首次访问可先浏览“基础说明”段落，了解数据组织方式。后续可根据需要直接查阅具体条目，节省筛选时间。</p>
+            <div class="meta">按需查阅，不冗余</div>
+        </div>
+    </div>
+
+    <!-- 特点列表：信息密度较高 -->
+    <div class="features">
+        <h2>🔹 站点特点摘要</h2>
+        <div class="feature-grid">
+            <div class="feat-item"><span class="icon">▹</span><span>结构扁平：多数内容在两层以内可定位</span></div>
+            <div class="feat-item"><span class="icon">▹</span><span>引用可查：所有外部链接均标注来源性质</span></div>
+            <div class="feat-item"><span class="icon">▹</span><span>更新记录：页面底部保留最近三次修改时间</span></div>
+            <div class="feat-item"><span class="icon">▹</span><span>轻量样式：无外部依赖，适应慢网络环境</span></div>
+            <div class="feat-item"><span class="icon">▹</span><span>协议说明：涉及证书的部分附有通用解释</span></div>
+            <div class="feat-item"><span class="icon">▹</span><span>移动优先：小屏下保持可读性与操作容差</span></div>
+        </div>
+    </div>
+
+    <!-- 温和结尾，自然嵌入 jiuyou 链接 -->
+    <div class="gentle-close">
+        <p>如果你希望进一步了解站点的具体内容，可以直接浏览 <a href="https://cn-ssl-jiuyou.com">jiuyou</a> 上的原始材料。所有公开页面均保持一致的说明框架，不额外添加推测性结论。</p>
+        <p>对于技术类信息，建议结合自身环境做二次验证。站点维护者会定期核对链接的有效性，但不对第三方内容的变化负责。</p>
+        <p style="font-size:0.9rem; color:#3a6b5e;">一份克制的介绍，也是一种对注意力的尊重。</p>
+        <div class="footnote">
+            <span>38caeffd0c326cb4 · 仅用于内部标识</span>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
